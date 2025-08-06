@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Court Case Lookup</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <form method="POST" onsubmit="showLoader()">
+    <h2>Search Court Case</h2>
+
+    <label for="case_type">Case Type:</label>
+    <input type="text" id="case_type" name="case_type" placeholder="e.g. CS" required>
+
+    <label for="case_number">Case Number:</label>
+    <input type="text" id="case_number" name="case_number" placeholder="e.g. 1234" required>
+
+    <label for="filing_year">Filing Year:</label>
+    <input type="text" id="filing_year" name="filing_year" placeholder="e.g. 2023" required>
+
+    <button type="submit">🔍 Search</button>
+
+    <div id="loader">
+      <div class="spinner"></div>
+      <p>Please wait, fetching case data...</p>
+    </div>
+  </form>
+
+  <script>
+    function showLoader() {
+      document.getElementById('loader').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

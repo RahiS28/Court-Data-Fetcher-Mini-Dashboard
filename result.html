@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Case Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="results-box">
+    {% if error %}
+      <h2 style="color: red;">{{ error }}</h2>
+    {% else %}
+      <h2>Case Details</h2>
+      <p><strong>Parties:</strong> {{ data.parties }}</p>
+      <p><strong>Filing Date:</strong> {{ data.filing_date }}</p>
+      <p><strong>Next Hearing:</strong> {{ data.next_hearing }}</p>
+      <p><strong>Latest Order:</strong> 
+        {% if data.latest_order_link %}
+          <a href="{{ data.latest_order_link }}" target="_blank">📄 Download PDF</a>
+        {% else %}
+          No order available
+        {% endif %}
+      </p>
+    {% endif %}
+    <br>
+    <a href="/">🔙 Back to Search</a>
+  </div>
+</body>
+</html>
